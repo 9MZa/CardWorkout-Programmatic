@@ -10,9 +10,9 @@ import UIKit
 class CardSelectionViewController: UIViewController {
     
     let cardImageView   = UIImageView()
-    let stopButton      = CWButton(backgoundColor: .systemRed, title: "Stop")
-    let resetButton     = CWButton(backgoundColor: .systemGreen, title: "Reset")
-    let rulesButton     = CWButton(backgoundColor: .systemBlue , title: "Rules")
+    let stopButton      = CWButton(color: .systemRed, title: "Stop", icon: "stop.circle")
+    let resetButton     = CWButton(color: .systemGreen, title: "Reset", icon: "arrow.clockwise.circle")
+    let rulesButton     = CWButton(color: .systemBlue , title: "Rules", icon: "list.clipboard")
     
     var cards: [UIImage] = CardDeck.allValues
     var timer: Timer!
@@ -28,7 +28,6 @@ class CardSelectionViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(showRandomCard), userInfo: nil, repeats: true)
     }
     
-    
     @objc func stopTimer() {
         timer.invalidate()
     }
@@ -37,8 +36,6 @@ class CardSelectionViewController: UIViewController {
         stopTimer()
         startTimer()
     }
-    
-    
     
     @objc func showRandomCard() {
         cardImageView.image = cards.randomElement()
